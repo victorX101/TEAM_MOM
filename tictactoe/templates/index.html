@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Tic-Tac-Toe</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 lefts bg-dark">
+		<div class="choosep">
+			<h3>Choose Playing Mode</h3>
+			<div>
+				<input type="button" id="single" value="1 Player" onclick="">
+				<input type="button" id="double" value="2 Players" onclick="">
+			</div>
+		</div>
+		
+		<div class="choosed">
+			<h3>Choose Difficulty</h3>
+			<div>
+				<input type="button" id="101" value="1" onclick="">
+				<input type="button" id="102" value="2" onclick="">
+				<input type="button" id="103" value="3" onclick="">
+				<input type="button" id="104" value="4" onclick="">
+				<input type="button" id="120" value="Ultimate" onclick="">
+			</div>
+			
+		</div>
+	
+		<div class="cstart">
+			<h3>Choose Starting Player</h3>
+			<div class="whostart">
+			<input type = "button" id = "10" value = "I START" onclick = "chance(10)">
+			<input type = "button" id = "11" value = "YOU START" onclick = "chance(11)">
+			</div>
+		</div>
+		<div class="newgame">
+		<button type="button" class="btn btn-light newb" onclick="startnew()">New Game</button>
+		</div>
+	</div>
+	
+
+	<div class="col-md-8">
+		<h2 id="result">CHOOSE STARTING PLAYER</h2>
+		<div class="tablediv">
+		<table class="tabletic" id="tabler">
+		<tr style="border-top: 0px solid white;">
+		<td><input type = "button" id = "1" class ="tap c1" onclick="change(0,0,1)" value=""></td>
+		<td><input type = "button" id = "2" class ="tap c2" onclick="change(0,1,2)" value=""></td>
+		<td><input type = "button" id = "3" class ="tap c3" onclick="change(0,2,3)" value=""></td>
+		</tr>
+		<tr>
+		<td><input type = "button" id = "4" class = "tap c4" onclick="change(1,0,4)" value=""></td>
+		<td><input type = "button" id = "5" class = "tap c5" onclick="change(1,1,5)" value=""></td>
+		<td><input type = "button" id = "6" class = "tap c6" onclick="change(1,2,6)" value=""></td>
+		</tr>
+		<tr>
+		<td><input type = "button" id = "7" class = "tap c7" onclick="change(2,0,7)" value=""></td>
+		<td><input type = "button" id = "8" class = "tap c8" onclick="change(2,1,8)" value=""></td>
+		<td><input type = "button" id = "9" class = "tap c9" onclick="change(2,2,9)" value=""></td>
+		</tr>
+		</table>
+		</div>
+	</div>
+	</div>
+</div>
+<script src="/static/js/index.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

@@ -34,7 +34,8 @@ function chance(id) //passing the first player information to view
         document.getElementById(x+1).value = 'X';
     }
     else {
-        document.getElementById("result").innerHTML = "START THE GAME";
+		document.getElementById("result").innerHTML = "START THE GAME";
+		document.getElementById("result").style.color = "black"
     }
 }
 //passing the user's choice and current stats of board or move to view and updating the computer's move

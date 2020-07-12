@@ -10,32 +10,34 @@
   #tabler{
     cursor: not-allowed;
   }
+  .btn{
+    margin: 30px 0px;
+  }
   .tablediv{
     padding: 3rem 0rem;
   }
-
-  .c1 , .c2, .c3{
+.c1 , .c2, .c3{
     border-top: none;
-  }
-  .c3 , .c6 , .c9{
+}
+.c3 , .c6 , .c9{
     border-right: none;
-  }
-  .c1 , .c4 , .c7{
+}
+.c1 , .c4 , .c7{
     border-left: none;
-  }
-  .c7 , .c8 , .c9{
+}
+.c7 , .c8 , .c9{
     border-bottom: none;
-  }
-  .tap:focus{
+}
+.tap:focus{
     outline: none;
     box-shadow: none;
-  }
-  #result{
+}
+#result{
     padding-top: 3rem;
     text-align: center;
-  }
+}
 h3{
-    color: rgb(192, 192, 192);
+    color: rgb(255, 255, 255);
 }
 td{
     padding: 0px;
@@ -44,13 +46,13 @@ td{
 .tabletic{
     margin-left: auto;
     margin-right: auto;
-  }
-  input{
+}
+input{
     vertical-align: middle;
-  }
-  .row{
+}
+.row{
     height: 100vh;
-  }
+}
   .lefts {
   }
   

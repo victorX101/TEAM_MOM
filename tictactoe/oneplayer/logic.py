@@ -52,12 +52,17 @@ def checkdraw(b):
 
 
 
-def tictac(b,comp,p,turn,depth):        # Minimax algorithm for tic-tac toe
+def tictac(b,comp,p,turn,depth,diff):        # Minimax algorithm for tic-tac toe
 	curr = comp
 	global xpos
 	global ypos
 	mx = -1000
 	mn = 1000
+	if(depth > diff):
+		if(turn == comp):
+			return 900,xpos,ypos
+		else:
+			return -900,xpos,ypos
 	if(turn == comp):
 		curr = p
 	check = valboard(b,comp,p,curr)
@@ -72,8 +77,7 @@ def tictac(b,comp,p,turn,depth):        # Minimax algorithm for tic-tac toe
 			for j in range(3):
 				if(b[i][j] == 0):
 					b[i][j] = comp
-					x = tictac(b,comp,p,p,depth+1)[0]
-					#print x
+					x = tictac(b,comp,p,p,depth+1,diff)[0]
 					if(x > mx):
 						mx = x
 						if(depth == 0):
@@ -86,7 +90,7 @@ def tictac(b,comp,p,turn,depth):        # Minimax algorithm for tic-tac toe
 			for j in range(3):
 				if(b[i][j] == 0):
 					b[i][j] = p
-					y = tictac(b,comp,p,comp,depth+1)[0]
+					y = tictac(b,comp,p,comp,depth+1,diff)[0]
 					if(y < mn):
 						mn = y
 						if(depth == 0):

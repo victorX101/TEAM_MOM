@@ -21,11 +21,11 @@
 		<div class="choosed">
 			<h3>Choose Difficulty</h3>
 			<div>
-				<input type="button" id="101" class = "btn btn-light" value="1" onclick="">
-				<input type="button" id="102" class = "btn btn-light" value="2" onclick="">
-				<input type="button" id="103" class = "btn btn-light" value="3" onclick="">
-				<input type="button" id="104" class = "btn btn-light" value="4" onclick="">
-				<input type="button" id="120" class = "btn btn-light" value="Ultimate" onclick="">
+				<input type="button" id="101" class = "btn btn-light" value="1" onclick="difficulty(1)">
+				<input type="button" id="102" class = "btn btn-light" value="2" onclick="difficulty(2)">
+				<input type="button" id="103" class = "btn btn-light" value="3" onclick="difficulty(3)">
+				<input type="button" id="104" class = "btn btn-light" value="4" onclick="difficulty(4)">
+				<input type="button" id="120" class = "btn btn-light" value="Ultimate" onclick="difficulty(20)">
 			</div>
 			
 		</div>
@@ -33,8 +33,8 @@
 		<div class="cstart">
 			<h3>Choose Starting Player</h3>
 			<div class="whostart">
-			<input type = "button" id = "10" value = "I START"  class ="btn btn-light" onclick = "chance(10)">
-			<input type = "button" id = "11" value = "YOU START"class ="btn btn-light"  onclick = "chance(11)">
+			<input type = "button" id = "10" value = "I START"  class ="btn btn-light" onclick = "chanced(10)">
+			<input type = "button" id = "11" value = "YOU START"class ="btn btn-light"  onclick = "chanced(11)">
 			</div>
 		</div>
 		<div class="newgame">
@@ -44,7 +44,7 @@
 	
 
 	<div class="col-md-8">
-		<h2 id="result">CHOOSE STARTING PLAYER</h2>
+		<h2 id="result" unselectable = "on">CHOOSE STARTING PLAYER</h2>
 		<div class="tablediv">
 		<table class="tabletic" id="tabler">
 		<tr style="border-top: 0px solid white;">

@@ -9,6 +9,8 @@ from oneplayer.logic import *
 def game(request):
 	if(request.method == 'POST'):
 		board = request.POST.getlist('board[]')
+		diff = request.POST.get('diff')
+		diff = int(diff)
 		a = [[0 for x in range(3)] for x in range(3)]
 		for i in range(3):
 			for j in range(3):
@@ -18,7 +20,7 @@ def game(request):
 			return JsonResponse({'val':0,'res':1,'winner':'player'})
 		elif(checkdraw(a) == 1):
 			return JsonResponse({'val':0,'res':1,'winner':'draw'})
-		mat = tictac(a,1,2,1,0)														#  tictactoe(array, computer ,player ,turn, depth)
+		mat = tictac(a,1,2,1,0,diff)														#  tictactoe(array, computer ,player ,turn, depth)
 		xpos = mat[1]
 		ypos = mat[2]                                                      			
 		a[xpos][ypos] = 1

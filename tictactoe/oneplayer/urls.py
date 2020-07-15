@@ -3,6 +3,7 @@ from oneplayer import views
 
 urlpatterns = [
     path('',views.home,name = 'home'),
-    path('game/',views.game,name = 'game')
+    path('game/',views.oneplayergame,name = 'game'),
+    path('two/',views.twoplayergame, name='two')
 
 ]

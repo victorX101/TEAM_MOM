@@ -2,22 +2,34 @@ var c = 0;
 var dif = -1;
 var board = [0,0,0,0,0,0,0,0,0];
 var func = 0;
-
-
+var nplayer = -1;             // Number of players
+var turn = -1;				  // For two player game 
 
 function startnew()
  {
 	for(i = 1; i <= 9; i++) {
 		var y = document.getElementById(i);
 		y.value = "";
-	} 
-	document.getElementById("result").innerHTML = "CHOOSE STARTING PLAYER";
+	}
+	for(var i = 0; i < board.length; i++) {
+        board[i] = 0;
+    }
+	nplayer = -1;
+	document.getElementById("result").innerHTML = "CHOOSE SINGLE OR MULTIPLAYER";
+	
 	dif = -1;
 	c = 0;
 	func = 0;
  }
 
-
+ function numplayer(id)
+ {
+	 if(id == 1)
+	 nplayer = 1;
+	 else
+	 nplayer = 2;
+	 document.getElementById("result").innerHTML = "CHOOSE STARTING PLAYER";
+ }
 
 function chance() 																					//passing the first player information to view
 {	
@@ -42,16 +54,24 @@ function chanced(id)
 	for(var i = 1; i <= 9; i++) {
 		var y = document.getElementById(i);
 		y.value = "";
-	} 
-	document.getElementById("result").innerHTML = "CHOOSE DIFFICULTY LEVEL"
+	}
 	if(id == 10) {
-		c = 2; 																							// I start
+		c = 2; 																							// I start     // Player O start
 	}
-	else {
-		c = 1; 																							// Computer start
+	else if(id == 11) {
+		c = 1; 																							// Computer start  // Player X start
 	}
-	func = 0;
-	func++;
+	if(nplayer == 1)
+	{
+		document.getElementById("result").innerHTML = "CHOOSE DIFFICULTY LEVEL"
+		func = 0;
+		func++;
+	}
+	if(nplayer == 2)
+	{
+		document.getElementById("result").innerHTML = c==1?("START THE GAME PLAYER X"):("START THE GAME PLAYER O");
+		turn = c;
+	}
 }
 
 function difficulty(id)
@@ -61,9 +81,17 @@ function difficulty(id)
 	func++;
 }
 
+function change(xpos,ypos,id)
+{
+	if(nplayer == 1)
+	changeone(xpos,ypos,id)											      // For Single player
+	else if(nplayer == 2)
+	changetwo(xpos,ypos,id)											     // For Multiplayer
+}
+
 
 																
-function change(xpos,ypos,id) 										//passing the user's choice and current stats of board to view.py and updating the computer's move
+function changeone(xpos,ypos,id) 										//passing the user's choice and current stats of board to view.py and updating the computer's move
 {   
 	if(func==3)
 	{
@@ -118,29 +146,6 @@ function change(xpos,ypos,id) 										//passing the user's choice and current 
 							board[parseInt(json[['val']])] = 1;
 							y1.value = t;
 						}
-					
-					// else {
-					// 	if(json['res'] == 1) {
-					// 		if(json['winner'] == 'comp') {
-					// 			y = document.getElementById(json['val']+1);
-					// 			y.value = 'O';
-					// 			document.getElementById("result").innerHTML = "YOU LOST";
-					// 		}
-					// 		else if(json['winner'] == 'player') {
-					// 			document.getElementById("result").innerHTML = "YOU WON";
-					// 		}
-					// 		else {
-					// 			document.getElementById("result").innerHTML = "GAME DRAW";
-					// 		}
-					// 		c = 0;
-					// 		document.getElementById("result").style.color = "black"
-					// 	}
-					// 	else {
-					// 		y1 = document.getElementById(json['val']+1);
-					// 		y1.value = 'O';
-					//         board[parseInt(json[['val']])] = 1;
-					// 	}
-					// }
 				},
 				error:function(json) {
 					alert(json['val']);
@@ -148,4 +153,58 @@ function change(xpos,ypos,id) 										//passing the user's choice and current 
 			});
 		}
 	}
+}
+
+
+function changetwo(xpos,ypos,id)
+{
+	var y = document.getElementById(id);
+	var index = 3*xpos + ypos;
+	if(c)
+	{
+		if(turn == 1) {
+			if(y.value == "") {
+			y.value = 'X';
+			board[index] = 1;
+			turn = 2;
+			document.getElementById("result").innerHTML = "PLAYER O's TURN";
+			}
+		}
+		else if(turn == 2) {
+			if(y.value == ""){
+			y.value = 'O';
+			board[index] = 2;
+			turn = 1;
+			document.getElementById("result").innerHTML = "PLAYER X's TURN";
+			}
+		}
+	}
+	$.ajax({
+		url : 'two/',
+		type: 'POST',
+		data:{"board[]":board},
+		cache:false,
+		success:function(json) {
+			if(json['res'] == 1)
+			{
+				if(json['winner'] == 1)
+				{
+					document.getElementById("result").innerHTML = "PLAYER X WON";
+
+				}
+				else if(json['winner'] == 0)
+				{
+					document.getElementById("result").innerHTML = "GAME DRAW";
+				}
+				else if(json['winner'] == 2)
+				{
+					document.getElementById("result").innerHTML = "PLAYER O WON";
+				}
+				c = 0;
+			}
+		},
+		error:function(json) {
+			alert(json['val']);
+		}
+	});
 }

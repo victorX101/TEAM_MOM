@@ -28,9 +28,9 @@ def valboard(b,comp,p,turn): #checks if a player has won or not
 		if(count == 3):
 			flag = 1
 
-	if(b[0][0] == turn and b[1][1] == turn and b[2][2] == turn):
+	if(b[0][0] == b[1][1] == b[2][2] and b[1][1] == turn):
 		flag = 1
-	if(b[0][2] == turn and b[1][1] == turn and b[2][0] == turn):
+	if(b[0][2] == b[1][1] == b[2][0] and b[1][1] == turn):
 		flag = 1
 	if(flag == 1):
 		if(turn == comp):

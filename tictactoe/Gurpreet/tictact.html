@@ -1,1 +1,95 @@
 
+<html>
+<head>
+<title>Tic-Tac-Toe</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel='icon' href='favicon.ico' type='image/x-icon'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 lefts text-center" id="leftpane">
+		<div class="choosep" id="l1">
+			<h3>Choose Playing Mode</h3>
+			<div>
+				<input type="button" class = "btn btn-light" id="single" value="1 Player">
+				<input type="button" class = "btn btn-light" id="double" value="2 Players">
+			</div>
+		</div>
+		
+		<div class="choosed" style="display:none" id="l2">
+			<h3>Choose Difficulty</h3>
+			<div>
+				<input type="button" id="101" class = "btn btn-light" value="1">
+				<input type="button" id="102" class = "btn btn-light" value="2">
+				<input type="button" id="103" class = "btn btn-light" value="3">
+				<input type="button" id="104" class = "btn btn-light" value="4">
+				<input type="button" id="120" class = "btn btn-light" value="Ultimate">
+			</div>
+			
+		</div>
+	
+		<div class="cstart" style="display:none" id="l3">
+			<h3>Choose Starting Player</h3>
+			<div class="whostart">
+			<input type = "button" id = "10" value = "I START"  class ="btn btn-light" onclick = "chance(10)">
+			<input type = "button" id = "11" value = "YOU START"class ="btn btn-light"  onclick = "chance(11)">
+			</div>
+		</div>
+		<div id="l5" class="cstart" style="display:none">
+			<br>
+			<label for="fname">Player 1 Name:</label>
+  			<input type="text" id="pname" name="fname" value="P1"><br><br>
+  			<label for="lname">Player 2 Name:</label>
+  			<input type="text" id="pnamep" name="lname" value="P2"><br>
+  			<button type="button" id="bl5" class="btn btn-light newb" onclick="displayNames()">Next</button>
+		</div>
+
+		<div class="cstart" style="display:none" id="l4">
+			<h3>Choose Starting Player</h3>
+			<div class="whostart">
+			<input type = "button" id = "111" value = "" class ="btn btn-light" onclick = "">
+			<input type = "button" id = "112" value = "" class ="btn btn-light" onclick = "">
+			</div>
+		</div>
+
+
+
+
+		<div class="newgame">
+		<button type="button" class="btn btn-light newb" onclick="startnew()">New Game</button>
+		</div>
+	</div>
+	
+
+	<div class="col-md-8">
+		<h2 id="result">CHOOSE STARTING PLAYER</h2>
+		<div class="tablediv">
+		<table class="tabletic" id="tabler">
+		<tr style="border-top: 0px solid white;">
+		<td><input type = "button" id = "1" class ="tap c1" onclick="change(0,0,1)" value=""></td>
+		<td><input type = "button" id = "2" class ="tap c2" onclick="change(0,1,2)" value=""></td>
+		<td><input type = "button" id = "3" class ="tap c3" onclick="change(0,2,3)" value=""></td>
+		</tr>
+		<tr>
+		<td><input type = "button" id = "4" class = "tap c4" onclick="change(1,0,4)" value=""></td>
+		<td><input type = "button" id = "5" class = "tap c5" onclick="change(1,1,5)" value=""></td>
+		<td><input type = "button" id = "6" class = "tap c6" onclick="change(1,2,6)" value=""></td>
+		</tr>
+		<tr>
+		<td><input type = "button" id = "7" class = "tap c7" onclick="change(2,0,7)" value=""></td>
+		<td><input type = "button" id = "8" class = "tap c8" onclick="change(2,1,8)" value=""></td>
+		<td><input type = "button" id = "9" class = "tap c9" onclick="change(2,2,9)" value=""></td>
+		</tr>
+		</table>
+		</div>
+	</div>
+	</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>

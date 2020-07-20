@@ -216,13 +216,13 @@ function changetwo(xpos,ypos,id)
 					document.getElementById("result").innerHTML = "PLAYER X WON";
 
 				}
-				else if(json['winner'] == 0)
-				{
-					document.getElementById("result").innerHTML = "GAME DRAW";
-				}
 				else if(json['winner'] == 2)
 				{
 					document.getElementById("result").innerHTML = "PLAYER O WON";
+				}
+				else if(json['winner'] == 0)
+				{
+					document.getElementById("result").innerHTML = "GAME DRAW";
 				}
 				c = 0;
 			}

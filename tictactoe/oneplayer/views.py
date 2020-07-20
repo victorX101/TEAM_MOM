@@ -19,10 +19,10 @@ def twoplayergame(request):
 		n = valboard(a,1,2,2)
 		if(s == 10):
 			return JsonResponse({'res':1,'winner':1})
-		elif(checkdraw(a) == 1):
-			return JsonResponse({'res':1,'winner':0})
 		elif(n == -10):
 			return JsonResponse({'res':1,'winner':2})
+		elif(checkdraw(a) == 1):
+			return JsonResponse({'res':1,'winner':0})
 		else:
 			return JsonResponse({'res':0,'winner':10})
 	else:

@@ -71,6 +71,7 @@ body{
     box-shadow: none;
 }
 #result{
+    color: black;
     padding-top: 3rem;
     font-size: 2.2rem;
     font-weight: 600;

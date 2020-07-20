@@ -13,10 +13,12 @@ function startnew()
 	}
 	for(var i = 0; i < board.length; i++) {
         board[i] = 0;
-    }
+	}
+	
 	nplayer = -1;
 	document.getElementById("result").innerHTML = "CHOOSE SINGLE OR MULTIPLAYER";
-	
+	document.getElementById("playername").style.display = "none";
+	document.getElementById("choosed").style.display = "none";
 	dif = -1;
 	c = 0;
 	func = 0;
@@ -25,10 +27,22 @@ function startnew()
  function numplayer(id)
  {
 	 if(id == 1)
-	 nplayer = 1;
+	 {
+		 nplayer = 1;
+		 document.getElementById("10").value = "I START";
+		 document.getElementById("11").value = "YOU START";
+		 document.getElementById("playername").style.display = "none";
+	 }
+	 
 	 else
-	 nplayer = 2;
+	 {
+		 nplayer = 2;
+		 document.getElementById("10").value = "PLAYER O";
+		 document.getElementById("11").value = "PLAYER X";
+		 document.getElementById("choosed").style.display = "none";
+	 }
 	 document.getElementById("result").innerHTML = "CHOOSE STARTING PLAYER";
+	 
  }
 
 function chance() 																					//passing the first player information to view
@@ -51,6 +65,16 @@ function chance() 																					//passing the first player information to
 
 function chanced(id)
 {
+	if(nplayer == 1)
+	{
+		document.getElementById("playername").style.display = "none";
+		 $("#choosed").toggle(400);
+	}
+	else if(nplayer == 2)
+	{
+		 document.getElementById("choosed").style.display = "none";
+		 $("#playername").toggle(400);
+	}
 	for(var i = 1; i <= 9; i++) {
 		var y = document.getElementById(i);
 		y.value = "";

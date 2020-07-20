@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'a_astro_spaceregular';
+    src: url('/static/assets/astrospace-ez2bg-webfont.woff2') format('woff2'),
+         url('/static/assets/astrospace-ez2bg-webfont.woff') format('woff');
+
+}
+body{
+    font-family: 'a_astro_spaceregular',Fallback,sans-serif;
+}
 .tap{
   height: 7rem;
   width: 7rem;
@@ -7,11 +16,40 @@
   background-color: white;
   border: 2px solid black;
   }
+  #choosed{
+      display: none;
+  }
+  #playername{
+      display: none;
+      padding-bottom: 2rem;
+  }
+  .labelg{
+      color: white;
+      font-size: 1.2rem;
+      margin-right: 10px;
+  }
+  .nameinput{
+      width: 40%;
+      min-width: 100px;
+      border-radius: 5px;
+      border: none;
+      text-align: center;
+  }
+  .nameinput:focus{
+    outline: none;
+    border: 2px solid rgb(19, 198, 230);
+  }
+  .teamname{
+      padding-top: 3rem;
+      padding-bottom: 4rem;
+      font-size: 2.3rem;
+  }
   #tabler{
     cursor: not-allowed;
   }
   .btn{
-    margin: 30px 0px;
+    margin-top: 10px;
+    margin-bottom: 40px;
   }
   .tablediv{
     padding: 3rem 0rem;
@@ -34,6 +72,8 @@
 }
 #result{
     padding-top: 3rem;
+    font-size: 2.2rem;
+    font-weight: 600;
     text-align: center;
     -webkit-user-select: none;      /* Safari */        
     -moz-user-select: none;         /* Firefox */
@@ -42,6 +82,8 @@
 }
 h3{
     color: rgb(255, 255, 255);
+    font-weight: 400;
+    font-size: 1.6rem;
 }
 td{
     padding: 0px;

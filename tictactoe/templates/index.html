@@ -10,6 +10,9 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4 lefts bg-dark text-center">
+		<div>
+			<h3 class="teamname">TEAM MOM</h3>
+		</div>
 		<div class="choosep">
 			<h3>Choose Playing Mode</h3>
 			<div>
@@ -17,8 +20,14 @@
 				<input type="button" class = "btn btn-light" id="double" value="2 Players" onclick="numplayer(2)">
 			</div>
 		</div>
-		
-		<div class="choosed">
+		<div class="cstart">
+			<h3>Choose Starting Player</h3>
+			<div class="whostart">
+			<input type = "button" id = "10" value = "I START"  class ="btn btn-light" onclick = "chanced(10)">
+			<input type = "button" id = "11" value = "YOU START"class ="btn btn-light"  onclick = "chanced(11)">
+			</div>
+		</div>
+		<div class="choosed" id="choosed">
 			<h3>Choose Difficulty</h3>
 			<div>
 				<input type="button" id="101" class = "btn btn-light" value="1" onclick="difficulty(1)">
@@ -29,13 +38,11 @@
 			</div>
 			
 		</div>
-	
-		<div class="cstart">
-			<h3>Choose Starting Player</h3>
-			<div class="whostart">
-			<input type = "button" id = "10" value = "I START"  class ="btn btn-light" onclick = "chanced(10)">
-			<input type = "button" id = "11" value = "YOU START"class ="btn btn-light"  onclick = "chanced(11)">
-			</div>
+		<div class="playername" id="playername">
+			<label for="onep" class="labelg">PLAYER X</label>
+			<input type="text" name="onep" class="nameinput" placeholder="YOUR NAME"><br>
+			<label for="twop" class="labelg">PLAYER O</label>
+			<input type="text" name="twop" class="nameinput" placeholder="YOUR NAME">
 		</div>
 		<div class="newgame">
 		<button type="button" class="btn btn-light newb" onclick="startnew()">New Game</button>

@@ -1,9 +1,10 @@
-var c = 0;
-var dif = -1;
+var c = 0; var dif = -1;
 var board = [0,0,0,0,0,0,0,0,0];
 var func = 0;
 var nplayer = -1;             // Number of players
 var turn = -1;				  // For two player game 
+var numplay = 0;			 // For playagain button
+var names = ["X","O"];		// Name of players
 
 function startnew()
  {
@@ -16,9 +17,14 @@ function startnew()
 	}
 	
 	nplayer = -1;
+	document.getElementById("xscore").value = 0;document.getElementById("oscore").value = 0;
+	document.getElementById("texta").value = "";
+	document.getElementById("textb").value = "";
 	document.getElementById("result").innerHTML = "CHOOSE SINGLE OR MULTIPLAYER";
 	document.getElementById("playername").style.display = "none";
 	document.getElementById("choosed").style.display = "none";
+	names[0] = "X"; names[1] = "O";
+	numplay = 0;
 	dif = -1;
 	c = 0;
 	func = 0;
@@ -70,7 +76,7 @@ function chanced(id)
 		document.getElementById("playername").style.display = "none";
 		 $("#choosed").toggle(400);
 	}
-	else if(nplayer == 2)
+	else if(nplayer == 2 && numplay == 0)
 	{
 		 document.getElementById("choosed").style.display = "none";
 		 $("#playername").toggle(400);
@@ -105,7 +111,7 @@ function difficulty(id)
 	func++;
 }
 
-function change(xpos,ypos,id)
+function change(xpos,ypos,id)											// Get input and check if Single or Multiplayer
 {
 	if(nplayer == 1)
 	changeone(xpos,ypos,id)											      // For Single player
@@ -113,8 +119,37 @@ function change(xpos,ypos,id)
 	changetwo(xpos,ypos,id)											     // For Multiplayer
 }
 
+//										------------------------------------
 
-																
+function playagain()													// When same two players want to play again
+{
+	if(nplayer == 2)
+	{
+		for(i = 1; i <= 9; i++) {
+			var y = document.getElementById(i);
+			y.value = "";
+		}
+		for(var i = 0; i < board.length; i++) {
+			board[i] = 0;
+		}
+		document.getElementById("result").innerHTML = "CHOOSE STARTING PLAYER"
+	}
+	numplay++;
+}
+
+function save()
+{
+	names[0] = document.getElementById("texta").value;
+	names[1] = document.getElementById("textb").value;
+	if(names[0] == "")
+	names[0] = "X"
+	if(names[1] == "")
+	names[1] = "O"
+	$(document).scrollTop($(document).height());
+}
+
+//  									---------------------------------------
+
 function changeone(xpos,ypos,id) 										//passing the user's choice and current stats of board to view.py and updating the computer's move
 {   
 	if(func==3)
@@ -179,6 +214,7 @@ function changeone(xpos,ypos,id) 										//passing the user's choice and curre
 	}
 }
 
+//									-------------------------------------------------------
 
 function changetwo(xpos,ypos,id)
 {
@@ -191,7 +227,7 @@ function changetwo(xpos,ypos,id)
 			y.value = 'X';
 			board[index] = 1;
 			turn = 2;
-			document.getElementById("result").innerHTML = "PLAYER O's TURN";
+			document.getElementById("result").innerHTML = names[1] + "'s TURN";
 			}
 		}
 		else if(turn == 2) {
@@ -199,7 +235,7 @@ function changetwo(xpos,ypos,id)
 			y.value = 'O';
 			board[index] = 2;
 			turn = 1;
-			document.getElementById("result").innerHTML = "PLAYER X's TURN";
+			document.getElementById("result").innerHTML = names[0] + "'s TURN";
 			}
 		}
 	}
@@ -213,12 +249,14 @@ function changetwo(xpos,ypos,id)
 			{
 				if(json['winner'] == 1)
 				{
-					document.getElementById("result").innerHTML = "PLAYER X WON";
+					document.getElementById("result").innerHTML = names[0] + " WON THE GAME";
+					document.getElementById("xscore").value++;
 
 				}
 				else if(json['winner'] == 2)
 				{
-					document.getElementById("result").innerHTML = "PLAYER O WON";
+					document.getElementById("result").innerHTML = names[1] + " WON THE GAME";
+					document.getElementById("oscore").value++;
 				}
 				else if(json['winner'] == 0)
 				{

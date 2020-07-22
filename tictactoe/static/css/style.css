@@ -4,6 +4,9 @@
          url('/static/assets/astrospace-ez2bg-webfont.woff') format('woff');
 
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     font-family: 'a_astro_spaceregular',Fallback,sans-serif;
 }
@@ -24,12 +27,15 @@ body{
   }
   #playername{
       display: none;
-      padding-bottom: 2rem;
+      padding-bottom: 1rem;
   }
   .labelg{
       color: white;
       font-size: 1.2rem;
       margin-right: 10px;
+  }
+  .newb{
+      margin-bottom: 20px !important;
   }
   .nameinput{
       width: 40%;
@@ -50,11 +56,17 @@ body{
   #tabler{
     cursor: not-allowed;
   }
+  #xscore , #oscore{
+      background-color: transparent;
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+  }
   .btn{
     margin-top: 10px;
     margin-bottom: 40px;
     transition: all ease 0.4s;
-    border: none;
+    border: 2px solid rgb(19, 198, 230);
   }
   .btn:hover{
       background-color: rgb(19, 198, 230);
@@ -107,6 +119,17 @@ input{
 }
 .row{
     height: 100vh;
+}
+.github{
+    display: block;
+    font-size: 0.7rem;
+    color: white;
+    margin-bottom: 1rem;
+    transition: all ease 0.2s;
+}
+.github:hover{
+    text-decoration: none;
+    color: rgb(19, 198, 230);
 }
 
  

@@ -9,18 +9,18 @@
 <body>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4 lefts text-center">
+		<div class="col-lg-4 lefts text-center" id="left">
 		<div>
-			<h3 class="teamname">TEAM MOM</h3>
+			<h3 class="teamname" id="teamname">TEAM MOM</h3>
 		</div>
-		<div class="choosep">
+		<div class="choosep" id="choosep">
 			<h3>Choose Playing Mode</h3>
 			<div>
 				<input type="button" class = "btn btn-light" id="single" value="1 Player" onclick="numplayer(1)">
 				<input type="button" class = "btn btn-light" id="double" value="2 Players" onclick="numplayer(2)">
 			</div>
 		</div>
-		<div class="cstart">
+		<div class="cstart" id="cstart">
 			<h3>Choose Starting Player</h3>
 			<div class="whostart">
 			<input type = "button" id = "10" value = "I START"  class ="btn btn-light" onclick = "chanced(10)">
@@ -40,17 +40,22 @@
 		</div>
 		<div class="playername" id="playername">
 			<label for="onep" class="labelg">PLAYER X</label>
-			<input type="text" name="onep" class="nameinput" placeholder="YOUR NAME"><br>
+			<input type="text" name="onep" class="nameinput" placeholder="YOUR NAME" id="texta">
+			<input id="xscore" type= "button" value="0"></input><br>
 			<label for="twop" class="labelg">PLAYER O</label>
-			<input type="text" name="twop" class="nameinput" placeholder="YOUR NAME">
+			<input type="text" name="twop" class="nameinput" placeholder="YOUR NAME" id = "textb">
+			<input id="oscore" type= "button" value="0"></input><br>
+			<button type="button" class="btn btn-light newb" onclick="save()">Save</button>
+			<button type="button" class="btn btn-light newb" onclick="playagain()">Play Again</button>
 		</div>
 		<div class="newgame">
 		<button type="button" class="btn btn-light newb" onclick="startnew()">New Game</button>
 		</div>
+		<a href="https://github.com/victorX101/TEAM_MOM" class="github" target="_blank">View on Github</a>
 	</div>
 	
 
-	<div class="col-md-8">
+	<div class="col-lg-8">
 		<h2 id="result" unselectable = "on">CHOOSE SINGLE OR MULTIPLAYER</h2>
 		<div class="tablediv">
 		<table class="tabletic" id="tabler">

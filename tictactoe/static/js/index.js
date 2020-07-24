@@ -51,6 +51,14 @@ function startnew()
 	 
  }
 
+ function conf()																				// Calls confetti when player wins
+ {
+	confetti.speed = 1;
+	if(window.innerWidth > 1000)
+	confetti.start(1700,200,225);
+	else
+	confetti.start(1700,100,125);
+ }
 function chance() 																					//passing the first player information to view
 {	
     for(var i = 0; i < board.length; i++) {
@@ -109,6 +117,7 @@ function difficulty(id)
 	dif = id;
 	chance();
 	func++;
+	$(document).scrollTop($(document).height());
 }
 
 function change(xpos,ypos,id)											// Get input and check if Single or Multiplayer
@@ -190,6 +199,7 @@ function changeone(xpos,ypos,id) 										//passing the user's choice and curre
 							}
 							else if(json['winner'] == 'player') {
 								document.getElementById("result").innerHTML = "YOU WON";
+								conf();
 							}
 							else {
 								y = document.getElementById(json['val']+1);
@@ -217,28 +227,23 @@ function changeone(xpos,ypos,id) 										//passing the user's choice and curre
 //									-------------------------------------------------------
 
 function changetwo(xpos,ypos,id)
-{
+{	
 	var y = document.getElementById(id);
 	var index = 3*xpos + ypos;
 	if(c)
 	{
-		if(turn == 1) {
-			if(y.value == "") {
-			y.value = 'X';
-			board[index] = 1;
-			turn = 2;
-			document.getElementById("result").innerHTML = names[1] + "'s TURN";
+	if(turn == 1) {
+		if(y.value == "") {
+		y.value = 'X';
+		board[index] = 1;
 			}
 		}
 		else if(turn == 2) {
 			if(y.value == ""){
 			y.value = 'O';
 			board[index] = 2;
-			turn = 1;
-			document.getElementById("result").innerHTML = names[0] + "'s TURN";
 			}
 		}
-	}
 	$.ajax({
 		url : 'two/',
 		type: 'POST',
@@ -251,12 +256,13 @@ function changetwo(xpos,ypos,id)
 				{
 					document.getElementById("result").innerHTML = names[0] + " WON THE GAME";
 					document.getElementById("xscore").value++;
-
+					conf();
 				}
 				else if(json['winner'] == 2)
 				{
 					document.getElementById("result").innerHTML = names[1] + " WON THE GAME";
 					document.getElementById("oscore").value++;
+					conf();
 				}
 				else if(json['winner'] == 0)
 				{
@@ -269,4 +275,18 @@ function changetwo(xpos,ypos,id)
 			alert(json['val']);
 		}
 	});
+	}
+	if(c)
+	{
+		if(turn == 1)
+			{
+				turn = 2;
+				document.getElementById("result").innerHTML = names[1] + "'s TURN";
+			}
+			else if(turn ==2)
+			{
+				turn = 1;
+				document.getElementById("result").innerHTML = names[0] + "'s TURN";
+			}
+	}
 }

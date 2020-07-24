@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2y!7dj6w@a%c4-=j6(x(=x-$^j0-ql&lquyf!vdo_536@bs1*o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -123,5 +123,4 @@ if DEBUG:
         os.path.join(BASE_DIR, "static")
     ]
 else:
-# static root is the actual path where collectstatic will collect all the files to be served by servers like nginx , apache.
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
